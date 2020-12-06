@@ -1,8 +1,16 @@
 [package]
-name = "load_covid19_data"
+name = "covid_up"
 version = "0.1.0"
 authors = ["Joel Watson <joelwat@gmail.com>"]
 edition = "2018"
+
+[lib]
+name = "load_covid"
+path = "src/lib.rs"
+
+[[bin]]
+name = "covid_up"
+path = "src/main.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
