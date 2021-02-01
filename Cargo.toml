@@ -1,6 +1,6 @@
 [package]
-name = "covid_up"
-version = "0.1.0"
+name = "covid19_data_loader"
+version = "0.0.1"
 authors = ["Joel Watson <joelwat@gmail.com>"]
 edition = "2018"
 
