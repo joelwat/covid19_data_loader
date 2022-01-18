@@ -1,20 +1,28 @@
-use std::env;
-
-use dotenv::{
-    dotenv,
-    var,
+use std::{
+    env,
+    fs,
+    path::{
+        Path,
+        PathBuf,
+    },
 };
 
-struct EnvVars {
-    data_dir: PathBuf,
+use anyhow::{
+    bail,
+    Context,
+};
+use dotenv::dotenv;
+
+pub struct EnvVars {
+    pub data_dir: PathBuf,
 }
 
 impl EnvVars {
-    fn get() -> anyhow::Result<EnvVars> {
-        dotenv().with_context(|| String::new("Failed to read .env file."))?;
+    pub fn get() -> anyhow::Result<EnvVars> {
+        dotenv().with_context(|| String::from("Failed to read .env file."))?;
 
         let env_var = env::var("DATA_DIR")
-            .with_context(|| String::new("The DATA_DIR env var must be set"))?;
+            .with_context(|| String::from("The DATA_DIR env var must be set"))?;
 
         let data_dir = Path::new(&env_var);
 
