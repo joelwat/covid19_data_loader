@@ -1,18 +1,21 @@
+use std::env;
+
+use dotenv::{
+    dotenv,
+    var,
+};
+
 struct EnvVars {
     data_dir: PathBuf,
 }
 
 impl EnvVars {
-    fn get() -> Result<EnvVars> {
-        dotenv().expect("Failed to read .env file.");
+    fn get() -> anyhow::Result<EnvVars> {
+        dotenv().with_context(|| String::new("Failed to read .env file."))?;
 
-        let env_var = env::var("DATA_DIR");
+        let env_var = env::var("DATA_DIR")
+            .with_context(|| String::new("The DATA_DIR env var must be set"))?;
 
-        if env_var.is_err() {
-            bail!("The DATA_DIR env var must be set");
-        }
-
-        let env_var = env_var.unwrap();
         let data_dir = Path::new(&env_var);
 
         if !data_dir.is_dir() {
