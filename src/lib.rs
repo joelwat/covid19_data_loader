@@ -79,7 +79,7 @@ fn get_env_vars() -> Result<EnvVars> {
 
     let env_var = env::var("DATA_DIR");
 
-    if let Err(_) = env_var {
+    if env_var.is_err() {
         bail!("The DATA_DIR env var must be set");
     }
 
