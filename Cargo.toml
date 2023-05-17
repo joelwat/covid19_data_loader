@@ -18,4 +18,4 @@ csv = "1.2.1"
 serde = { version = "1.0", features = ["derive"] }
 regex = "1"
 dotenv = "0.15"
-mysql = "22.2"
+mysql = "24.0"
