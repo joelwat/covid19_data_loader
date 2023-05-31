@@ -14,7 +14,7 @@ path = "src/main.rs"
 
 [dependencies]
 anyhow = "1.0.71"
-csv = "1.2.1"
+csv = "1.2.2"
 serde = { version = "1.0", features = ["derive"] }
 regex = "1"
 dotenv = "0.15"
